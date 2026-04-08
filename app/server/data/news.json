@@ -1,0 +1,98 @@
+[
+  {
+    "id": "post_1771438307475_di9zk",
+    "authorId": "user_1771362730948",
+    "content": "we are ggo",
+    "likes": 1,
+    "likedBy": [
+      "user_1771362730948"
+    ],
+    "comments": 0,
+    "commentsList": [],
+    "timestamp": "2026-02-18T18:11:47.475Z",
+    "type": "announcement"
+  },
+  {
+    "id": "post_1771438289976_q4w8t",
+    "authorId": "user_1771362730948",
+    "content": "hi",
+    "likes": 1,
+    "likedBy": [
+      "user_1771362730948"
+    ],
+    "comments": 0,
+    "commentsList": [],
+    "timestamp": "2026-02-18T18:11:29.976Z",
+    "type": "general"
+  },
+  {
+    "id": "post_1",
+    "authorId": "user_1",
+    "content": "Excited to announce that EcoTech Innovators just secured $250K in seed funding! This is a huge milestone for our team. Thanks to everyone who supported us on this journey. 🚀",
+    "likes": 47,
+    "comments": 1,
+    "timestamp": "2024-01-14T14:00:00Z",
+    "type": "achievement",
+    "likedBy": [
+      "user_1",
+      "user_1771362730948"
+    ],
+    "commentsList": [
+      {
+        "id": "comment_1771438069906_sba14",
+        "postId": "post_1",
+        "authorId": "user_1",
+        "content": "hi",
+        "timestamp": "2026-02-18T18:07:49.906Z"
+      }
+    ]
+  },
+  {
+    "id": "post_2",
+    "authorId": "user_4",
+    "content": "Just published a new article on growth strategies for B2B SaaS startups. Check it out and let me know your thoughts! #SaaS #Growth #Startup",
+    "likes": 28,
+    "comments": 8,
+    "timestamp": "2024-01-13T10:30:00Z",
+    "type": "general"
+  },
+  {
+    "id": "post_3",
+    "authorId": "user_6",
+    "content": "Looking for talented developers to join our portfolio companies. If you're passionate about fintech, AI, or healthtech, send me a message!",
+    "likes": 67,
+    "comments": 23,
+    "timestamp": "2024-01-12T16:00:00Z",
+    "type": "announcement"
+  },
+  {
+    "id": "post_4",
+    "authorId": "user_3",
+    "content": "HealthAI Labs just completed our pilot program with 3 major hospitals! The results exceeded our expectations. Onward to FDA clearance! 💪",
+    "likes": 53,
+    "comments": 1,
+    "timestamp": "2024-01-11T09:00:00Z",
+    "type": "milestone",
+    "commentsList": [
+      {
+        "id": "comment_1771438074607_agg4f",
+        "postId": "post_4",
+        "authorId": "user_1",
+        "content": "oh",
+        "timestamp": "2026-02-18T18:07:54.607Z"
+      }
+    ],
+    "likedBy": [
+      "user_1771362730948"
+    ]
+  },
+  {
+    "id": "post_5",
+    "authorId": "user_7",
+    "content": "Blockchain is evolving rapidly. Excited to share insights from my latest DeFi project at the upcoming Web3 Summit. Who else is attending?",
+    "likes": 34,
+    "comments": 19,
+    "timestamp": "2024-01-10T11:00:00Z",
+    "type": "general"
+  }
+]
