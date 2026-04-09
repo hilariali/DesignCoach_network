@@ -11,6 +11,8 @@ import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import axios from 'axios';
+import bcrypt from 'bcryptjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -113,17 +115,32 @@ app.put('/api/users/:id', (req, res) => {
 });
 
 // --- Auth / Passwords ---
-app.post('/api/auth/validate-password', (req, res) => {
+app.post('/api/auth/validate-password', async (req, res) => {
     const { email, password } = req.body;
+    if (!email || !password) return res.status(400).json({ valid: false });
     const passwords = readJSON('passwords.json') || {};
-    const valid = passwords[email.toLowerCase()] === password;
+    const stored = passwords[email.toLowerCase()];
+    if (!stored) return res.json({ valid: false });
+    // Support both legacy plaintext (no $2 prefix) and bcrypt hashes
+    let valid = false;
+    if (stored.startsWith('$2')) {
+        valid = await bcrypt.compare(password, stored);
+    } else {
+        // Legacy plaintext — compare and upgrade to hash
+        valid = stored === password;
+        if (valid) {
+            passwords[email.toLowerCase()] = await bcrypt.hash(password, 10);
+            writeJSON('passwords.json', passwords);
+        }
+    }
     res.json({ valid });
 });
 
-app.post('/api/auth/set-password', (req, res) => {
+app.post('/api/auth/set-password', async (req, res) => {
     const { email, password } = req.body;
+    if (!email || !password) return res.status(400).json({ error: 'email and password required' });
     const passwords = readJSON('passwords.json') || {};
-    passwords[email.toLowerCase()] = password;
+    passwords[email.toLowerCase()] = await bcrypt.hash(password, 10);
     writeJSON('passwords.json', passwords);
     res.json({ success: true });
 });
@@ -685,6 +702,109 @@ app.put('/api/reports/:id', (req, res) => {
     reports[idx] = { ...reports[idx], ...req.body };
     writeJSON('reports.json', reports);
     res.json(reports[idx]);
+});
+
+// --- AI / Grok Proxy ---
+// Proxies Grok API calls so the API key is never exposed to the browser.
+const GROK_API_KEY = process.env.XAI_API_KEY || '';
+
+const COACH_SYSTEM_PROMPT = `You are an AI Business Coach embedded in BusinessMatch — a startup matchmaking and team-building platform.
+
+Your role is to help aspiring entrepreneurs and startup teams with:
+- Building and refining their Business Model Canvas
+- Developing go-to-market strategies
+- Preparing investor pitches
+- Conducting competitive analysis
+- Finding the right team members and skillsets
+- Setting milestones and tracking progress
+- Growth strategies and market validation
+
+Guidelines:
+- Be supportive, encouraging, and actionable in your advice.
+- Keep responses concise but thorough — aim for 150-300 words.
+- Use bullet points, numbered lists, and bold text for clarity when helpful.
+- Ask follow-up questions to understand context better before giving advice.
+- Reference startup best practices, lean methodology, and design thinking where appropriate.
+- When discussing team building, consider the user's existing team members and their expertise.
+- Be specific with your recommendations — avoid generic advice.
+- Use emojis sparingly to keep the tone friendly and approachable.`;
+
+app.post('/api/ai/coach', async (req, res) => {
+    if (!GROK_API_KEY) {
+        return res.status(503).json({ error: 'AI service not configured. Set XAI_API_KEY on the server.' });
+    }
+    const { conversationHistory = [], userMessage } = req.body;
+    if (!userMessage) return res.status(400).json({ error: 'userMessage is required' });
+
+    const messages = [
+        { role: 'system', content: COACH_SYSTEM_PROMPT },
+        ...conversationHistory,
+        { role: 'user', content: userMessage },
+    ];
+
+    try {
+        const response = await axios.post(
+            'https://api.x.ai/v1/chat/completions',
+            { model: 'grok-3-mini', messages, stream: false, temperature: 0.7 },
+            { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${GROK_API_KEY}` } }
+        );
+        res.json({ content: response.data.choices[0].message.content });
+    } catch (err) {
+        console.error('Grok API error:', err?.response?.status, err?.message);
+        if (err?.response?.status === 401) return res.status(502).json({ error: 'AI authentication failed.' });
+        if (err?.response?.status === 429) return res.status(429).json({ error: 'Rate limit exceeded.' });
+        res.status(502).json({ error: 'AI service unavailable. Please try again.' });
+    }
+});
+
+const CANVAS_GENERATION_PROMPT = `You are a Business Model Canvas generator. Based on the conversation history provided, generate a comprehensive Lean Business Model Canvas.
+
+You MUST respond with ONLY valid HTML — no markdown, no explanation, no code fences. Your response will be rendered directly in an iframe.
+
+The HTML must be a complete, self-contained document with all styles inline or in a <style> tag. Do NOT use external CSS or JavaScript libraries.
+
+Requirements:
+- Use a clean, professional 3-column grid layout resembling a real Business Model Canvas
+- Use a modern color palette with distinct soft background colors for each section
+- Include these 9 sections: Key Partners, Key Activities, Value Propositions, Customer Relationships, Customer Segments, Key Resources, Channels, Cost Structure, Revenue Streams
+- Each section should have a title with an icon/emoji and bullet points
+- Make it responsive and print-friendly
+- Use the Google Font "Inter" via @import
+- Add a header with the team/project name if discernible from context
+- The canvas should fill the viewport width
+- Use subtle borders, rounded corners, and shadows
+- Add a footer with "Generated by AI Business Coach" and today's date
+
+CRITICAL: Return ONLY the HTML. No intro text, no code fences, nothing before <!DOCTYPE html> and nothing after </html>.`;
+
+app.post('/api/ai/canvas', async (req, res) => {
+    if (!GROK_API_KEY) {
+        return res.status(503).json({ error: 'AI service not configured. Set XAI_API_KEY on the server.' });
+    }
+    const { teamChatMessages = [], coachMessages = [], teamName } = req.body;
+
+    const contextSummary = [
+        teamName ? `Team/Project: ${teamName}` : '',
+        teamChatMessages.length ? `Team Chat:\n${teamChatMessages.map((m) => `${m.senderName || m.senderId}: ${m.content}`).join('\n')}` : '',
+        coachMessages.length ? `Coaching Session:\n${coachMessages.map((m) => `${m.role}: ${m.content}`).join('\n')}` : '',
+    ].filter(Boolean).join('\n\n');
+
+    const messages = [
+        { role: 'system', content: CANVAS_GENERATION_PROMPT },
+        { role: 'user', content: contextSummary || 'Generate a generic startup business model canvas.' },
+    ];
+
+    try {
+        const response = await axios.post(
+            'https://api.x.ai/v1/chat/completions',
+            { model: 'grok-3', messages, stream: false, temperature: 0.3, max_tokens: 4096 },
+            { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${GROK_API_KEY}` } }
+        );
+        res.json({ html: response.data.choices[0].message.content });
+    } catch (err) {
+        console.error('Grok canvas error:', err?.response?.status, err?.message);
+        res.status(502).json({ error: 'Failed to generate canvas. Please try again.' });
+    }
 });
 
 // --- Reset (re-seed) ---

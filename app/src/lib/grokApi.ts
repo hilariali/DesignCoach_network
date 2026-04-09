@@ -1,41 +1,13 @@
 /**
  * Grok API integration for AI Business Coach.
- * Uses the x.ai chat completions endpoint.
+ * All calls are proxied through the backend server so the API key
+ * is never exposed in the browser bundle.
  */
-import axios from 'axios';
 
-const client = axios.create({
-    baseURL: 'https://api.x.ai/v1',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_XAI_API_KEY}`,
-    },
-});
-
-/**
- * The system prompt that defines the AI Business Coach persona.
- * This serves as the context + instructions for every conversation.
- */
-const COACH_SYSTEM_PROMPT = `You are an AI Business Coach embedded in BusinessMatch — a startup matchmaking and team-building platform.
-
-Your role is to help aspiring entrepreneurs and startup teams with:
-- Building and refining their Business Model Canvas
-- Developing go-to-market strategies
-- Preparing investor pitches
-- Conducting competitive analysis
-- Finding the right team members and skillsets
-- Setting milestones and tracking progress
-- Growth strategies and market validation
-
-Guidelines:
-- Be supportive, encouraging, and actionable in your advice.
-- Keep responses concise but thorough — aim for 150-300 words.
-- Use bullet points, numbered lists, and bold text for clarity when helpful.
-- Ask follow-up questions to understand context better before giving advice.
-- Reference startup best practices, lean methodology, and design thinking where appropriate.
-- When discussing team building, consider the user's existing team members and their expertise.
-- Be specific with your recommendations — avoid generic advice.
-- Use emojis sparingly to keep the tone friendly and approachable.`;
+const API_BASE = import.meta.env.VITE_API_URL ||
+    (typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+        ? '/api'
+        : 'http://localhost:3001/api');
 
 export interface GrokMessage {
     role: 'system' | 'user' | 'assistant';
@@ -43,10 +15,9 @@ export interface GrokMessage {
 }
 
 /**
- * Send a conversation to the Grok API and get a response.
- * Automatically prepends the system prompt.
+ * Send a conversation to the backend AI proxy and get a coach response.
  *
- * @param conversationHistory - Array of previous messages in the conversation
+ * @param conversationHistory - Array of previous messages (without the system prompt)
  * @param userMessage - The new user message to send
  * @returns The assistant's response text
  */
@@ -54,65 +25,23 @@ export async function getCoachResponse(
     conversationHistory: GrokMessage[],
     userMessage: string
 ): Promise<string> {
-    // Build the messages array with system prompt + history + new message
-    const messages: GrokMessage[] = [
-        { role: 'system', content: COACH_SYSTEM_PROMPT },
-        ...conversationHistory,
-        { role: 'user', content: userMessage },
-    ];
+    const res = await fetch(`${API_BASE}/ai/coach`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ conversationHistory, userMessage }),
+    });
 
-    try {
-        const response = await client.post('/chat/completions', {
-            model: 'grok-3-mini',
-            messages: messages.map(({ role, content }) => ({ role, content })),
-            stream: false,
-            temperature: 0.7,
-        });
-
-        return response.data.choices[0].message.content;
-    } catch (error) {
-        console.error('Grok API error:', error);
-
-        if (axios.isAxiosError(error)) {
-            if (error.response?.status === 401) {
-                throw new Error('API authentication failed. Please check the API key.');
-            }
-            if (error.response?.status === 429) {
-                throw new Error('Rate limit exceeded. Please wait a moment and try again.');
-            }
-            if (error.response?.status === 503 || error.response?.status === 500) {
-                throw new Error('The AI service is temporarily unavailable. Please try again shortly.');
-            }
-        }
-
-        throw new Error('Failed to get a response from the AI coach. Please try again.');
+    if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        if (res.status === 401 || res.status === 502) throw new Error(err.error || 'API authentication failed.');
+        if (res.status === 429) throw new Error(err.error || 'Rate limit exceeded. Please wait a moment and try again.');
+        if (res.status === 503) throw new Error(err.error || 'The AI service is not configured on this server.');
+        throw new Error(err.error || 'Failed to get a response from the AI coach. Please try again.');
     }
+
+    const data = await res.json();
+    return data.content;
 }
-
-/**
- * The system prompt for generating a Business Model Canvas as HTML.
- */
-const CANVAS_GENERATION_PROMPT = `You are a Business Model Canvas generator. Based on the conversation history provided, generate a comprehensive Lean Business Model Canvas.
-
-You MUST respond with ONLY valid HTML — no markdown, no explanation, no code fences. Your response will be rendered directly in an iframe.
-
-The HTML must be a complete, self-contained document with all styles inline or in a <style> tag. Do NOT use external CSS or JavaScript libraries.
-
-Use this exact structure for the canvas layout. Make it visually stunning:
-
-Requirements:
-- Use a clean, professional 3-column grid layout resembling a real Business Model Canvas
-- Use a modern color palette with distinct soft background colors for each section
-- Include these 9 sections: Key Partners, Key Activities, Value Propositions, Customer Relationships, Customer Segments, Key Resources, Channels, Cost Structure, Revenue Streams
-- Each section should have a title with an icon/emoji and bullet points
-- Make it responsive and print-friendly
-- Use the Google Font "Inter" via @import
-- Add a header with the team/project name if discernible from context
-- The canvas should fill the viewport width and look great at any size
-- Use subtle borders, rounded corners, and shadows for a premium look
-- Add a footer with "Generated by AI Business Coach" and today's date
-
-CRITICAL: Return ONLY the HTML. No intro text, no code fences, nothing before <!DOCTYPE html> and nothing after </html>.`;
 
 /**
  * Generate a full Business Model Canvas as HTML from conversation context.
@@ -123,84 +52,33 @@ CRITICAL: Return ONLY the HTML. No intro text, no code fences, nothing before <!
  * @returns Object with { html, summary }
  */
 export async function generateBusinessCanvas(
-    teamChatMessages: { role: 'user' | 'assistant'; content: string }[],
+    teamChatMessages: { role: 'user' | 'assistant'; content: string; senderName?: string; senderId?: string }[],
     aiChatMessages: { role: 'user' | 'assistant'; content: string }[],
     teamName: string
 ): Promise<{ html: string; summary: string }> {
-    // Build a context message combining both chats
-    let contextContent = `Team: ${teamName}\n\n`;
+    const res = await fetch(`${API_BASE}/ai/canvas`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            teamChatMessages: teamChatMessages.slice(-30),
+            coachMessages: aiChatMessages.slice(-40),
+            teamName,
+        }),
+    });
 
-    if (teamChatMessages.length > 0) {
-        contextContent += '=== TEAM CHAT CONTEXT ===\n';
-        teamChatMessages.slice(-30).forEach((m) => {
-            contextContent += `${m.role === 'user' ? 'Team Member' : 'AI'}: ${m.content}\n`;
-        });
-        contextContent += '\n';
+    if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        if (res.status === 503) throw new Error(err.error || 'The AI service is not configured on this server.');
+        throw new Error(err.error || 'Failed to generate the Business Model Canvas. Please try again.');
     }
 
-    if (aiChatMessages.length > 0) {
-        contextContent += '=== AI COACH CHAT CONTEXT ===\n';
-        aiChatMessages.slice(-40).forEach((m) => {
-            contextContent += `${m.role === 'user' ? 'User' : 'AI Coach'}: ${m.content}\n`;
-        });
-    }
+    const data = await res.json();
+    let html = data.html as string;
 
-    const messages: GrokMessage[] = [
-        { role: 'system', content: CANVAS_GENERATION_PROMPT },
-        {
-            role: 'user',
-            content: `Based on the following conversation context, generate a complete Lean Business Model Canvas as HTML for "${teamName}":\n\n${contextContent}`,
-        },
-    ];
+    // Clean up any accidental markdown fencing
+    html = html.replace(/^```html?\s*/i, '').replace(/\s*```$/i, '').trim();
 
-    try {
-        const response = await client.post('/chat/completions', {
-            model: 'grok-3-mini',
-            messages: messages.map(({ role, content }) => ({ role, content })),
-            stream: false,
-            temperature: 0.6,
-        });
-
-        let html = response.data.choices[0].message.content as string;
-
-        // Clean up any accidental markdown fencing
-        html = html.replace(/^```html?\s*/i, '').replace(/\s*```$/i, '').trim();
-
-        // Generate a brief summary
-        const summaryMessages: GrokMessage[] = [
-            {
-                role: 'system',
-                content: 'Summarize the following Business Model Canvas HTML into 1-2 sentences describing the business model. Be concise.',
-            },
-            { role: 'user', content: html },
-        ];
-
-        let summary = `Business Model Canvas for ${teamName}`;
-        try {
-            const summaryResponse = await client.post('/chat/completions', {
-                model: 'grok-3-mini',
-                messages: summaryMessages.map(({ role, content }) => ({ role, content })),
-                stream: false,
-                temperature: 0.3,
-            });
-            summary = summaryResponse.data.choices[0].message.content;
-        } catch {
-            // Non-critical; keep default summary
-        }
-
-        return { html, summary };
-    } catch (error) {
-        console.error('Canvas generation error:', error);
-
-        if (axios.isAxiosError(error)) {
-            if (error.response?.status === 401) {
-                throw new Error('API authentication failed.');
-            }
-            if (error.response?.status === 429) {
-                throw new Error('Rate limit exceeded. Please wait and try again.');
-            }
-        }
-
-        throw new Error('Failed to generate the Business Model Canvas. Please try again.');
-    }
+    const summary = `Business Model Canvas for ${teamName}`;
+    return { html, summary };
 }
+

@@ -1,0 +1,18 @@
+[
+    {
+        "id": "report_1",
+        "reporterId": "user_2",
+        "reportedUserId": "user_1",
+        "reason": "Suspicious activity and spamming in DM messages.",
+        "timestamp": "2026-02-21T10:05:00.000Z",
+        "resolved": false
+    },
+    {
+        "id": "report_2",
+        "reporterId": "user_4",
+        "reportedUserId": "user_6",
+        "reason": "Inappropriate language in public team chat.",
+        "timestamp": "2026-02-20T15:30:00.000Z",
+        "resolved": true
+    }
+]

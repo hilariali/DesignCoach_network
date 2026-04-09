@@ -1,0 +1,251 @@
+[
+  {
+    "id": "chat_1",
+    "name": "EcoTech Innovators",
+    "type": "team",
+    "participants": [
+      "user_1",
+      "user_2",
+      "user_3",
+      "user_1771362730948"
+    ],
+    "teamId": "team_1",
+    "unreadCount": 0,
+    "updatedAt": "2026-02-18T09:37:02.574Z",
+    "lastMessage": {
+      "id": "msg_1771407422552_e0ri2",
+      "chatId": "chat_1",
+      "senderId": "user_1",
+      "senderType": "user",
+      "content": "Shared a file: 1henry.pdf",
+      "type": "file",
+      "timestamp": "2026-02-18T09:37:02.552Z",
+      "attachments": [
+        {
+          "id": "att_1771407422551",
+          "name": "1henry.pdf",
+          "url": "#",
+          "type": "application/pdf",
+          "size": 11997900
+        }
+      ]
+    }
+  },
+  {
+    "id": "chat_2",
+    "name": "HealthAI Labs",
+    "type": "team",
+    "participants": [
+      "user_5",
+      "user_4",
+      "user_6"
+    ],
+    "teamId": "team_2",
+    "unreadCount": 0,
+    "updatedAt": "2024-01-14T16:45:00Z"
+  },
+  {
+    "id": "chat_3",
+    "name": "FinFlow Solutions",
+    "type": "team",
+    "participants": [
+      "user_7",
+      "user_8"
+    ],
+    "teamId": "team_3",
+    "unreadCount": 1,
+    "updatedAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "chatbot_1",
+    "name": "EcoTech AI Coach",
+    "type": "bot",
+    "participants": [
+      "user_1",
+      "user_2",
+      "user_3",
+      "bot"
+    ],
+    "teamId": "team_1",
+    "unreadCount": 0,
+    "updatedAt": "2026-02-18T10:12:47.881Z",
+    "lastMessage": {
+      "id": "msg_bot_1771409567861_1lwm4",
+      "chatId": "chatbot_1",
+      "senderId": "bot",
+      "senderType": "bot",
+      "content": "Hi Sarah! It's great to meet you—I'm your AI business coach here at BusinessMatch. Thanks for introducing yourself; that helps me personalize our conversations even more.\n\nSince we were just discussing team building for your energy management startup, I want to build on that. You mentioned looking for key roles, and I suggested positions like a technical expert and sales specialist based on your B2B focus. To tailor this further, I'd love to hear more about your current team setup. For instance:\n\n- Who are the core members and their backgrounds (e.g., tech, sales, or operations)?\n- What skills or gaps have you identified so far?\n- Are there specific challenges you're facing in recruiting?\n\nThis will let me provide more targeted advice, drawing from lean startup principles like assembling a balanced team for rapid iteration and growth. Let's refine those recommendations together—I'm here to support you every step of the way! What details can you share? 😊",
+      "type": "text",
+      "timestamp": "2026-02-18T10:12:47.861Z"
+    }
+  },
+  {
+    "id": "chatbot_2",
+    "name": "HealthAI Coach",
+    "type": "bot",
+    "participants": [
+      "user_5",
+      "user_4",
+      "user_6",
+      "bot"
+    ],
+    "teamId": "team_2",
+    "unreadCount": 0,
+    "updatedAt": "2024-01-14T14:00:00Z"
+  },
+  {
+    "id": "chat_4",
+    "name": "EdTech Pioneers",
+    "type": "team",
+    "participants": [
+      "user_11",
+      "user_10",
+      "user_12"
+    ],
+    "teamId": "team_4",
+    "unreadCount": 2,
+    "updatedAt": "2024-01-16T08:00:00Z"
+  },
+  {
+    "id": "chatbot_4",
+    "name": "EdTech AI Coach",
+    "type": "bot",
+    "participants": [
+      "user_11",
+      "user_10",
+      "user_12",
+      "bot"
+    ],
+    "teamId": "team_4",
+    "unreadCount": 1,
+    "updatedAt": "2024-01-16T09:00:00Z"
+  },
+  {
+    "id": "user_1_dm_user_2",
+    "name": "Sarah Chen & Michael Rodriguez",
+    "type": "dm",
+    "participants": [
+      "user_1",
+      "user_2"
+    ],
+    "unreadCount": 0,
+    "updatedAt": "2026-02-18T18:12:25.332Z",
+    "lastMessage": {
+      "id": "msg_share_1771438345332",
+      "chatId": "user_1_dm_user_2",
+      "senderId": "user_1",
+      "senderType": "user",
+      "content": "📢 Shared a post from Test Hilaria:\n\n\"we are ggo\"",
+      "type": "text",
+      "timestamp": "2026-02-18T18:12:25.332Z"
+    }
+  },
+  {
+    "id": "user_1771362730948_dm_user_2",
+    "name": "Michael Rodriguez & Test Hilaria",
+    "type": "dm",
+    "participants": [
+      "user_2",
+      "user_1771362730948"
+    ],
+    "unreadCount": 0,
+    "updatedAt": "2026-02-18T08:59:11.733Z",
+    "lastMessage": {
+      "id": "msg_1771405151719_nffo4",
+      "chatId": "user_1771362730948_dm_user_2",
+      "senderId": "user_2",
+      "senderType": "user",
+      "content": "hi",
+      "type": "text",
+      "timestamp": "2026-02-18T08:59:11.719Z"
+    }
+  },
+  {
+    "id": "chat_1771405212848",
+    "name": "Test",
+    "type": "team",
+    "participants": [
+      "user_2"
+    ],
+    "teamId": "team_1771405212848",
+    "unreadCount": 0,
+    "updatedAt": "2026-02-18T09:00:12.871Z"
+  },
+  {
+    "id": "chatbot_1771405212848",
+    "name": "Test AI Coach",
+    "type": "bot",
+    "participants": [
+      "user_2",
+      "bot"
+    ],
+    "teamId": "team_1771405212848",
+    "unreadCount": 0,
+    "updatedAt": "2026-02-18T09:00:12.877Z"
+  },
+  {
+    "id": "chatbot_1771409172564_51hjh",
+    "name": "EcoTech Innovators — Marketing Strategy",
+    "type": "bot",
+    "participants": [
+      "user_1",
+      "user_2",
+      "user_3",
+      "bot"
+    ],
+    "teamId": "team_1",
+    "unreadCount": 0,
+    "updatedAt": "2026-03-01T12:23:50.946Z",
+    "lastMessage": {
+      "id": "msg_bot_1772367830903_kz5in",
+      "chatId": "chatbot_1771409172564_51hjh",
+      "senderId": "bot",
+      "senderType": "bot",
+      "content": "I appreciate you bringing up competitive analysis—it's a smart, proactive step that can sharpen your social media strategy and overall go-to-market plan, drawing from lean methodology to identify opportunities and avoid pitfalls. However, to provide a tailored analysis, I need more details about your business, such as your industry, product/service, and key competitors. Without that, I'll outline a general framework to guide you, and then ask for specifics to refine it.\n\nHere's how to conduct a basic competitive analysis using startup best practices like SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis:\n\n- **Identify Competitors:** List 3-5 direct (offering similar products) and indirect (solving the same problem differently) rivals. For example, if you're in social media promotion for a tech startup, compare to platforms like Buffer or Hootsuite.\n\n- **Analyze Key Areas:** \n  1. **Market Positioning:** Evaluate their social media presence (e.g., engagement rates, content quality) and how they reach your shared audience.\n  2. **Strengths and Weaknesses:** Use SWOT to assess what they do well (e.g., innovative campaigns) versus gaps (e.g., slow response times), and how your team can differentiate.\n  3. **Strategies and Metrics:** Look at their pricing, customer acquisition tactics, and performance metrics (via tools like SimilarWeb or social insights). This helps you benchmark and iterate your own efforts.\n  4. **Opportunities for You:** Identify underserved areas, like niche social channels, to gain an edge in your GTM strategy.\n\nThis analysis will inform decisions on team hires (e.g., if competitors excel in content, consider a creator) and help validate your idea.\n\nTo make this more actionable, could you share: What industry are you in? Who are your main competitors? And what specific aspects (e.g., marketing tactics or pricing) do you want to focus on? Let's dive in and turn insights into your competitive advantage! 😊",
+      "type": "text",
+      "timestamp": "2026-03-01T12:23:50.903Z"
+    }
+  },
+  {
+    "id": "user_1_dm_user_4",
+    "name": "Sarah Chen & David Kim",
+    "type": "dm",
+    "participants": [
+      "user_1",
+      "user_4"
+    ],
+    "unreadCount": 0,
+    "updatedAt": "2026-02-18T10:11:22.544Z",
+    "lastMessage": {
+      "id": "msg_1771409482522_7iqjd",
+      "chatId": "user_1_dm_user_4",
+      "senderId": "user_1",
+      "senderType": "user",
+      "content": "Hello from Sarah Chen!",
+      "type": "text",
+      "timestamp": "2026-02-18T10:11:22.522Z"
+    }
+  },
+  {
+    "id": "user_1_dm_user_1771362730948",
+    "name": "Sarah Chen & Test Hilaria",
+    "type": "dm",
+    "participants": [
+      "user_1",
+      "user_1771362730948"
+    ],
+    "unreadCount": 0,
+    "updatedAt": "2026-02-18T17:38:56.177Z"
+  },
+  {
+    "id": "user_1_dm_user_3",
+    "name": "Sarah Chen & Emily Watson",
+    "type": "dm",
+    "participants": [
+      "user_1",
+      "user_3"
+    ],
+    "unreadCount": 0,
+    "updatedAt": "2026-02-18T18:08:04.424Z"
+  }
+]

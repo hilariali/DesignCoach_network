@@ -1,0 +1,661 @@
+[
+  {
+    "id": "user_1",
+    "fullName": "Sarah Chen",
+    "email": "sarah.chen@example.com",
+    "phone": "+1-555-0101",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
+    "bio": "Experienced product manager with 8+ years in SaaS startups. Passionate about building products that solve real problems.",
+    "expectation": "team_up",
+    "trackRecords": [
+      {
+        "id": "tr1",
+        "title": "Led Product at TechStart",
+        "description": "Grew user base from 0 to 100K",
+        "date": "2022-01-15"
+      },
+      {
+        "id": "tr2",
+        "title": "PM at GrowthCo",
+        "description": "Increased revenue by 300%",
+        "date": "2020-06-20"
+      }
+    ],
+    "expertiseDomains": [
+      "Product Management",
+      "SaaS",
+      "Growth Strategy"
+    ],
+    "targetCustomers": [
+      "B2B Enterprises",
+      "SMBs"
+    ],
+    "resourcesAssets": [
+      "Industry Connections",
+      "Mentorship Network",
+      "Technical Infrastructure"
+    ],
+    "userType": "expert",
+    "rating": {
+      "overall": 4.8,
+      "membershipScore": 5,
+      "teamScore": 5,
+      "projectScore": 4.5,
+      "trainingScore": 5
+    },
+    "profileCompleteness": 95,
+    "membershipDate": "2023-01-15",
+    "teamsJoined": 3,
+    "successfulProjects": 8,
+    "offlineTrainings": 12,
+    "isTerminated": false
+  },
+  {
+    "id": "user_2",
+    "fullName": "Michael Rodriguez",
+    "email": "michael.r@example.com",
+    "phone": "+1-555-0102",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=michael",
+    "bio": "Full-stack developer specializing in React, Node.js, and cloud architecture. Looking to join an early-stage startup.",
+    "expectation": "work_for_others",
+    "trackRecords": [
+      {
+        "id": "tr3",
+        "title": "Senior Dev at CodeBase",
+        "description": "Built microservices architecture",
+        "date": "2023-03-10"
+      },
+      {
+        "id": "tr4",
+        "title": "Tech Lead at StartupX",
+        "description": "Led team of 5 developers",
+        "date": "2021-08-15"
+      }
+    ],
+    "expertiseDomains": [
+      "Software Development",
+      "Cloud Computing",
+      "AI/ML"
+    ],
+    "targetCustomers": [
+      "Startups",
+      "B2B Enterprises"
+    ],
+    "resourcesAssets": [
+      "Technical Infrastructure",
+      "Development Team"
+    ],
+    "userType": "regular",
+    "rating": {
+      "overall": 4.2,
+      "membershipScore": 4,
+      "teamScore": 4,
+      "projectScore": 4.5,
+      "trainingScore": 4
+    },
+    "profileCompleteness": 88,
+    "membershipDate": "2023-06-20",
+    "teamsJoined": 3,
+    "successfulProjects": 5,
+    "offlineTrainings": 6
+  },
+  {
+    "id": "user_3",
+    "fullName": "Emily Watson",
+    "email": "emily.w@example.com",
+    "phone": "+1-555-0103",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=emily",
+    "bio": "UX/UI designer with a background in psychology. I create intuitive, user-centered designs that drive engagement.",
+    "expectation": "team_up",
+    "trackRecords": [
+      {
+        "id": "tr5",
+        "title": "Design Lead at CreativeStudio",
+        "description": "Redesigned flagship product",
+        "date": "2022-11-20"
+      },
+      {
+        "id": "tr6",
+        "title": "Freelance Designer",
+        "description": "50+ successful projects",
+        "date": "2021-05-01"
+      }
+    ],
+    "expertiseDomains": [
+      "UI/UX Design",
+      "Product Management",
+      "Mobile Apps"
+    ],
+    "targetCustomers": [
+      "B2C Consumers",
+      "Startups"
+    ],
+    "resourcesAssets": [
+      "Design Team",
+      "Industry Connections"
+    ],
+    "userType": "expert",
+    "rating": {
+      "overall": 4.6,
+      "membershipScore": 4.5,
+      "teamScore": 4.5,
+      "projectScore": 5,
+      "trainingScore": 4.5
+    },
+    "profileCompleteness": 92,
+    "membershipDate": "2023-03-10",
+    "teamsJoined": 4,
+    "successfulProjects": 12,
+    "offlineTrainings": 8
+  },
+  {
+    "id": "user_4",
+    "fullName": "David Kim",
+    "email": "david.kim@example.com",
+    "phone": "+1-555-0104",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=david",
+    "bio": "Marketing strategist with expertise in growth hacking and brand building. Former CMO at two successful startups.",
+    "expectation": "team_up",
+    "trackRecords": [
+      {
+        "id": "tr7",
+        "title": "CMO at BrandRocket",
+        "description": "Achieved 10M users in 2 years",
+        "date": "2022-09-15"
+      },
+      {
+        "id": "tr8",
+        "title": "Marketing Director at ScaleUp",
+        "description": "Series B to C growth",
+        "date": "2021-02-28"
+      }
+    ],
+    "expertiseDomains": [
+      "Marketing",
+      "Sales",
+      "Growth Strategy"
+    ],
+    "targetCustomers": [
+      "B2C Consumers",
+      "SMBs"
+    ],
+    "resourcesAssets": [
+      "Marketing Channels",
+      "Existing Customer Base",
+      "Funding ($50K-$100K)"
+    ],
+    "userType": "expert",
+    "rating": {
+      "overall": 4.9,
+      "membershipScore": 5,
+      "teamScore": 5,
+      "projectScore": 5,
+      "trainingScore": 4.5
+    },
+    "profileCompleteness": 98,
+    "membershipDate": "2022-12-01",
+    "teamsJoined": 5,
+    "successfulProjects": 15,
+    "offlineTrainings": 20
+  },
+  {
+    "id": "user_5",
+    "fullName": "Lisa Thompson",
+    "email": "lisa.t@example.com",
+    "phone": "+1-555-0105",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=lisa",
+    "bio": "Data scientist with PhD in Statistics. Specializing in predictive modeling and machine learning applications.",
+    "expectation": "work_for_others",
+    "trackRecords": [
+      {
+        "id": "tr9",
+        "title": "Data Scientist at AI Corp",
+        "description": "Built recommendation engine",
+        "date": "2023-01-10"
+      },
+      {
+        "id": "tr10",
+        "title": "Researcher at DataLab",
+        "description": "Published 5 papers",
+        "date": "2021-07-15"
+      }
+    ],
+    "expertiseDomains": [
+      "Data Science",
+      "AI/ML",
+      "Software Development"
+    ],
+    "targetCustomers": [
+      "B2B Enterprises",
+      "Startups"
+    ],
+    "resourcesAssets": [
+      "Technical Infrastructure",
+      "Patents/IP"
+    ],
+    "userType": "regular",
+    "rating": {
+      "overall": 4.3,
+      "membershipScore": 3.5,
+      "teamScore": 4,
+      "projectScore": 5,
+      "trainingScore": 4.5
+    },
+    "profileCompleteness": 85,
+    "membershipDate": "2023-08-15",
+    "teamsJoined": 1,
+    "successfulProjects": 3,
+    "offlineTrainings": 4
+  },
+  {
+    "id": "user_6",
+    "fullName": "James Wilson",
+    "email": "james.w@example.com",
+    "phone": "+1-555-0106",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=james",
+    "bio": "Serial entrepreneur with 3 exits. Looking to mentor and invest in promising startups.",
+    "expectation": "team_up",
+    "trackRecords": [
+      {
+        "id": "tr11",
+        "title": "Founder at ExitCo",
+        "description": "$50M exit",
+        "date": "2022-05-20"
+      },
+      {
+        "id": "tr12",
+        "title": "Angel Investor",
+        "description": "15+ investments",
+        "date": "2021-01-01"
+      }
+    ],
+    "expertiseDomains": [
+      "Finance",
+      "Operations",
+      "Legal"
+    ],
+    "targetCustomers": [
+      "Startups",
+      "SMBs"
+    ],
+    "resourcesAssets": [
+      "Funding ($100K+)",
+      "Mentorship Network",
+      "Legal Support",
+      "Industry Connections"
+    ],
+    "userType": "expert",
+    "rating": {
+      "overall": 5,
+      "membershipScore": 5,
+      "teamScore": 5,
+      "projectScore": 5,
+      "trainingScore": 5
+    },
+    "profileCompleteness": 100,
+    "membershipDate": "2022-10-01",
+    "teamsJoined": 8,
+    "successfulProjects": 20,
+    "offlineTrainings": 25
+  },
+  {
+    "id": "user_7",
+    "fullName": "Anna Martinez",
+    "email": "anna.m@example.com",
+    "phone": "+1-555-0107",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=anna",
+    "bio": "Blockchain developer and Web3 enthusiast. Building decentralized applications for the future.",
+    "expectation": "team_up",
+    "trackRecords": [
+      {
+        "id": "tr13",
+        "title": "Blockchain Dev at CryptoCo",
+        "description": "Launched 3 DeFi protocols",
+        "date": "2023-02-15"
+      },
+      {
+        "id": "tr14",
+        "title": "Smart Contract Auditor",
+        "description": "Audited 20+ contracts",
+        "date": "2022-08-01"
+      }
+    ],
+    "expertiseDomains": [
+      "Blockchain",
+      "Software Development",
+      "Cybersecurity"
+    ],
+    "targetCustomers": [
+      "Startups",
+      "B2B Enterprises"
+    ],
+    "resourcesAssets": [
+      "Technical Infrastructure",
+      "Cloud Credits"
+    ],
+    "userType": "regular",
+    "rating": {
+      "overall": 4.4,
+      "membershipScore": 4,
+      "teamScore": 4,
+      "projectScore": 5,
+      "trainingScore": 4
+    },
+    "profileCompleteness": 90,
+    "membershipDate": "2023-05-10",
+    "teamsJoined": 2,
+    "successfulProjects": 6,
+    "offlineTrainings": 7
+  },
+  {
+    "id": "user_8",
+    "fullName": "Robert Taylor",
+    "email": "rob.t@example.com",
+    "phone": "+1-555-0108",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=robert",
+    "bio": "Operations expert with experience scaling teams from 10 to 500+. Passionate about building efficient processes.",
+    "expectation": "work_for_others",
+    "trackRecords": [
+      {
+        "id": "tr15",
+        "title": "COO at ScaleFast",
+        "description": "Scaled ops team to 200+",
+        "date": "2022-12-01"
+      },
+      {
+        "id": "tr16",
+        "title": "VP Ops at GrowthInc",
+        "description": "Reduced costs by 40%",
+        "date": "2021-04-15"
+      }
+    ],
+    "expertiseDomains": [
+      "Operations",
+      "Finance",
+      "HR"
+    ],
+    "targetCustomers": [
+      "B2B Enterprises",
+      "SMBs"
+    ],
+    "resourcesAssets": [
+      "Accounting Services",
+      "Office Space"
+    ],
+    "userType": "expert",
+    "rating": {
+      "overall": 4.7,
+      "membershipScore": 4.5,
+      "teamScore": 5,
+      "projectScore": 4.5,
+      "trainingScore": 5
+    },
+    "profileCompleteness": 93,
+    "membershipDate": "2023-02-20",
+    "teamsJoined": 4,
+    "successfulProjects": 10,
+    "offlineTrainings": 15
+  },
+  {
+    "id": "user_9",
+    "fullName": "Priya Sharma",
+    "email": "priya.s@example.com",
+    "phone": "+1-555-0109",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=priya",
+    "bio": "Healthcare strategist and biotech consultant. Bridging the gap between clinical research and market adoption.",
+    "expectation": "team_up",
+    "trackRecords": [
+      {
+        "id": "tr17",
+        "title": "VP Strategy at MedInnovate",
+        "description": "Guided 3 FDA approvals",
+        "date": "2022-07-10"
+      },
+      {
+        "id": "tr18",
+        "title": "Consultant at BioStart",
+        "description": "Raised $5M seed for biotech startups",
+        "date": "2021-11-01"
+      }
+    ],
+    "expertiseDomains": [
+      "Healthcare",
+      "Operations",
+      "Legal"
+    ],
+    "targetCustomers": [
+      "Healthcare Providers",
+      "B2B Enterprises"
+    ],
+    "resourcesAssets": [
+      "Industry Connections",
+      "Mentorship Network",
+      "Legal Support"
+    ],
+    "userType": "expert",
+    "rating": {
+      "overall": 4.7,
+      "membershipScore": 5,
+      "teamScore": 4.5,
+      "projectScore": 4.5,
+      "trainingScore": 5
+    },
+    "profileCompleteness": 96,
+    "membershipDate": "2023-04-01",
+    "teamsJoined": 3,
+    "successfulProjects": 9,
+    "offlineTrainings": 11
+  },
+  {
+    "id": "user_10",
+    "fullName": "Tommy Nguyen",
+    "email": "tommy.n@example.com",
+    "phone": "+1-555-0110",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=tommy",
+    "bio": "Recent CS grad exploring startup opportunities. Strong in Python, JavaScript, and eager to learn everything about building products.",
+    "expectation": "work_for_others",
+    "trackRecords": [
+      {
+        "id": "tr19",
+        "title": "Intern at TechCorp",
+        "description": "Built internal dashboard used by 200 employees",
+        "date": "2023-06-15"
+      }
+    ],
+    "expertiseDomains": [
+      "Software Development",
+      "Mobile Apps"
+    ],
+    "targetCustomers": [
+      "Startups"
+    ],
+    "resourcesAssets": [
+      "Cloud Credits"
+    ],
+    "userType": "regular",
+    "rating": {
+      "overall": 3.5,
+      "membershipScore": 3,
+      "teamScore": 3,
+      "projectScore": 4,
+      "trainingScore": 4
+    },
+    "profileCompleteness": 65,
+    "membershipDate": "2024-01-05",
+    "teamsJoined": 0,
+    "successfulProjects": 0,
+    "offlineTrainings": 2
+  },
+  {
+    "id": "user_11",
+    "fullName": "Olivia Park",
+    "email": "olivia.p@example.com",
+    "phone": "+1-555-0111",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=olivia",
+    "bio": "EdTech innovator with 10 years in curriculum design and learning science. Built two successful e-learning platforms.",
+    "expectation": "team_up",
+    "trackRecords": [
+      {
+        "id": "tr20",
+        "title": "Founder of LearnFast",
+        "description": "Platform used by 500K students",
+        "date": "2022-04-01"
+      },
+      {
+        "id": "tr21",
+        "title": "VP Product at EduCloud",
+        "description": "Launched adaptive learning engine",
+        "date": "2020-09-15"
+      }
+    ],
+    "expertiseDomains": [
+      "Education",
+      "Product Management",
+      "AI/ML"
+    ],
+    "targetCustomers": [
+      "Educational Institutions",
+      "B2C Consumers"
+    ],
+    "resourcesAssets": [
+      "Existing Customer Base",
+      "Industry Connections",
+      "Patents/IP"
+    ],
+    "userType": "expert",
+    "rating": {
+      "overall": 4.8,
+      "membershipScore": 5,
+      "teamScore": 5,
+      "projectScore": 4.5,
+      "trainingScore": 5
+    },
+    "profileCompleteness": 98,
+    "membershipDate": "2023-02-01",
+    "teamsJoined": 3,
+    "successfulProjects": 11,
+    "offlineTrainings": 14
+  },
+  {
+    "id": "user_12",
+    "fullName": "Carlos Rivera",
+    "email": "carlos.r@example.com",
+    "phone": "+1-555-0112",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=carlos",
+    "bio": "Hardware engineer turned IoT entrepreneur. Building smart devices for agriculture and environmental monitoring.",
+    "expectation": "team_up",
+    "trackRecords": [
+      {
+        "id": "tr22",
+        "title": "CTO at SmartFarm",
+        "description": "Deployed 10K IoT sensors across 200 farms",
+        "date": "2023-01-20"
+      },
+      {
+        "id": "tr23",
+        "title": "Engineer at Intel",
+        "description": "5 years in chip design",
+        "date": "2020-03-01"
+      }
+    ],
+    "expertiseDomains": [
+      "IoT",
+      "Renewable Energy",
+      "Software Development"
+    ],
+    "targetCustomers": [
+      "Agriculture",
+      "B2B Enterprises",
+      "Government"
+    ],
+    "resourcesAssets": [
+      "Technical Infrastructure",
+      "Patents/IP",
+      "Funding ($50K-$100K)"
+    ],
+    "userType": "expert",
+    "rating": {
+      "overall": 4.5,
+      "membershipScore": 4,
+      "teamScore": 5,
+      "projectScore": 4.5,
+      "trainingScore": 4.5
+    },
+    "profileCompleteness": 91,
+    "membershipDate": "2023-07-01",
+    "teamsJoined": 2,
+    "successfulProjects": 7,
+    "offlineTrainings": 9
+  },
+  {
+    "id": "user_1771362730948",
+    "fullName": "Test Hilaria",
+    "email": "test@hilaria.com",
+    "phone": "",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=Test%20Hilaria",
+    "bio": "I am good",
+    "expectation": "work_for_others",
+    "trackRecords": [
+      {
+        "id": "tr_1771362767991",
+        "title": "test1",
+        "description": "dw",
+        "date": "2026-02-17T21:12:47.991Z"
+      }
+    ],
+    "expertiseDomains": [
+      "Software Development",
+      "AI/ML"
+    ],
+    "targetCustomers": [
+      "B2B Enterprises",
+      "SMBs"
+    ],
+    "resourcesAssets": [
+      "Cloud Credits"
+    ],
+    "userType": "regular",
+    "rating": {
+      "overall": 0,
+      "membershipScore": 0,
+      "teamScore": 0,
+      "projectScore": 0,
+      "trainingScore": 0
+    },
+    "profileCompleteness": 75,
+    "membershipDate": "2026-02-17T21:12:10.948Z",
+    "teamsJoined": 1,
+    "successfulProjects": 0,
+    "offlineTrainings": 0
+  },
+  {
+    "id": "admin_1",
+    "fullName": "System Administrator",
+    "email": "admin@businessmatch.com",
+    "phone": "+1-800-ADMIN",
+    "profilePicture": "https://api.dicebear.com/7.x/avataaars/svg?seed=admin",
+    "bio": "Platform Administrator. Managing user statuses, team info, and master control settings.",
+    "expectation": "team_up",
+    "trackRecords": [],
+    "expertiseDomains": [
+      "Administration",
+      "Platform Management"
+    ],
+    "targetCustomers": [],
+    "resourcesAssets": [],
+    "userType": "admin",
+    "rating": {
+      "overall": 5,
+      "membershipScore": 5,
+      "teamScore": 5,
+      "projectScore": 5,
+      "trainingScore": 5
+    },
+    "profileCompleteness": 100,
+    "membershipDate": "2020-01-01",
+    "teamsJoined": 0,
+    "successfulProjects": 0,
+    "offlineTrainings": 0,
+    "isTerminated": false
+  }
+]

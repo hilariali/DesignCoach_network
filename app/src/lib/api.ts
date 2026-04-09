@@ -7,7 +7,10 @@
  */
 import type { UserProfile, Team, Chat, Message, NewsPost, NewsComment, BusinessCanvasVersion, TeamInvitation } from '@/types';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+const API_BASE = import.meta.env.VITE_API_URL ||
+    (typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+        ? '/api'  // Production: Firebase Hosting rewrites /api/** to the Cloud Function
+        : 'http://localhost:3001/api');  // Local dev: Express server
 
 // ============ Helpers ============
 

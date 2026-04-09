@@ -1,0 +1,26 @@
+[
+  {
+    "id": "inv_1771409378550_5x0hk",
+    "teamId": "team_1",
+    "teamName": "EcoTech Innovators",
+    "invitedUserId": "user_4",
+    "invitedBy": "user_1",
+    "invitedByName": "Sarah Chen",
+    "role": "Developer",
+    "status": "expired",
+    "createdAt": "2026-02-18T10:09:38.550Z",
+    "expiresAt": "2026-02-19T10:09:38.550Z"
+  },
+  {
+    "id": "inv_1771436336171_8wcva",
+    "teamId": "team_1",
+    "teamName": "EcoTech Innovators",
+    "invitedUserId": "user_1771362730948",
+    "invitedBy": "user_1",
+    "invitedByName": "Sarah Chen",
+    "role": "Developer",
+    "status": "declined",
+    "createdAt": "2026-02-18T17:38:56.171Z",
+    "expiresAt": "2026-02-19T17:38:56.171Z"
+  }
+]
